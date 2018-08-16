@@ -2,8 +2,6 @@ var objmap = require('object-map');
 var objkeysmap = require('object-keys-map');
 var deepEqual = require('deep-equal');
 
-var extend = typeof Object.assign === 'function' ? Object.assign : require('node-extend');
-
 function addDesign(s) {
   return '_design/' + s;
 }
@@ -11,7 +9,7 @@ function addDesign(s) {
 function normalizeDoc(doc, id) {
 
   function normalize(doc) {
-    doc = extend({}, doc);
+    doc = Object.assign({}, doc);
     Object.keys(doc).forEach(function(prop) {
       var type = typeof doc[prop];
       if(type === 'object') {
